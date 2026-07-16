@@ -20,7 +20,7 @@ Jira integration is handled via an external Atlassian MCP server — configure i
 
 ### 2. Configure your IDE
 
-Replace the `ALL_CAPS` placeholders below with the values from step 1.
+Replace the `<ALL_CAPS>` placeholders below with the values from step 1.
 
 <details>
 <summary><strong>Cursor</strong></summary>
@@ -31,15 +31,15 @@ Create or edit `.cursor/mcp.json` in your project root (or `~/.cursor/mcp.json` 
 {
   "mcpServers": {
     "github": {
-      "url": "GHOST_URL/mcp/github",
+      "url": "<GHOST_URL>/mcp/github",
       "headers": {
-        "X-GitHub-Token": "GITHUB_PAT"
+        "X-GitHub-Token": "<GITHUB_PAT>"
       }
     },
-    "reports": {
-      "url": "GHOST_URL/mcp/reports",
+    "work-reports": {
+      "url": "<GHOST_URL>/mcp/reports",
       "headers": {
-        "Authorization": "Bearer GHOST_PAT"
+        "Authorization": "Bearer <GHOST_PAT>"
       }
     },
     "jira": {
@@ -62,12 +62,12 @@ Restart Cursor after saving. The Jira server uses OAuth — you'll be prompted t
 
 ```bash
 claude mcp add --transport streamable-http github \
-  GHOST_URL/mcp/github \
-  --header "X-GitHub-Token: GITHUB_PAT"
+  <GHOST_URL>/mcp/github \
+  --header "X-GitHub-Token: <GITHUB_PAT>"
 
 claude mcp add --transport streamable-http reports \
-  GHOST_URL/mcp/reports \
-  --header "Authorization: Bearer GHOST_PAT"
+  <GHOST_URL>/mcp/reports \
+  --header "Authorization: Bearer <GHOST_PAT>"
 
 claude mcp add --transport streamable-http jira \
   https://mcp.atlassian.com/v1/mcp
