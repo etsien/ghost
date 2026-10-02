@@ -394,13 +394,24 @@ should understand what was accomplished without clicking any links.
 - The report is ONLY a list of work items
 - No sections, headers, summaries, or future plans
 
+### Determine the week number
+
+Before saving, call `list_management_reports(limit=1)` to see the most recent report's \
+`report_period`. Increment the week number by 1. If no previous report exists, calculate \
+the ISO week number from the report period start date.
+
 ### Save the report
 
 Use `save_management_report` (Ghost MCP) with the `entries` parameter (NOT `content`):
+
+- **title**: A short informative summary of the report content (less than 10 words). \
+Do NOT use the week number as the title. Example: "Lightwell APIs, CVE fixes, AI use cases"
+- **report_period**: The week identifier, e.g. "Week N, Mon Year"
+
 ```json
 {{
-  "title": "Week N, Month Year",
-  "report_period": "Week N, Mon Year",
+  "title": "Lightwell APIs, CVE fixes, AI use cases",
+  "report_period": "Week 35, Aug 2026",
   "entries": [
     {{
       "text": "[Fixed](https://github.com/org/repo/pull/42) the [login timeout bug](https://redhat.atlassian.net/browse/PROJ-123) affecting production users",
